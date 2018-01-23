@@ -1,11 +1,30 @@
 <span class="card-title">Edit profile</span>
 
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name,:validate => true, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
+  <div class="field">
+    <%= f.label :'first name' %><span style="color: red">*</span><br />
+    <%= f.text_field :'firstName', autofocus: true %>
+  </div>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :'last name' %><span style="color: red">*</span><br />
+    <%= f.text_field :'lastName', autofocus: true %>
+  </div>
+
+   <div class="field">
+    <%= f.label :'mobile number' %><span style="color: red">*</span><br />
+    <%= f.number_field :'mobileNumber', autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :'image' %><br />
+    <%= f.file_field :'image' %>
+  </div>
+   <br />
+  <div class="field">
+    <%= f.label :email %><span style="color: red">*</span><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 

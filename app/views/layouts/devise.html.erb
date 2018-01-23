@@ -19,14 +19,21 @@
   <body>
      <!--nav bar-->
       <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper" >
       <a href="#" class="brand-logo">Welcome</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/home/index">Home</a></li>
-        <li><a href="/members/sign_in">Login</a></li>
-        <li><a href="/members/sign_up">User registration</a></li>
-        <li><a href="/members/sign_up">Admin Registration</a></li>
-      </ul>
+        
+        <% if member_signed_in? %>
+          <li><a href="/home/index">Home</a></li>
+          <li><a href="/members/edit">Edit profile</a></li>
+          <li><%= link_to 'Sign_out',  destroy_member_session_path,:method => :delete %></li>
+        <%else%>
+          <li><a href="/home/index">Home</a></li>
+          <li><a href="/members/sign_in">Login</a></li>
+          <li><a href="/members/sign_up">User registration</a></li>
+          <li><a href="/members/sign_up">Admin Registration</a></li>
+        <% end %>
+        </ul>
     </div>
   </nav>
 
