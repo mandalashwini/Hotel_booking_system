@@ -1,19 +1,19 @@
   <span class="card-title">Sign Up</span>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name,:validate => true, url: registration_path(resource_name))  do |f| %>
   <%= devise_error_messages! %>
   <div class="field">
-    <%= f.label :'first name' %><br />
+    <%= f.label :'first name' %><span style="color: red">*</span><br />
     <%= f.text_field :'firstName', autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :'last name' %><br />
+    <%= f.label :'last name' %><span style="color: red">*</span><br />
     <%= f.text_field :'lastName', autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :'mobile number' %><br />
+    <%= f.label :'mobile number' %><span style="color: red">*</span><br />
     <%= f.number_field :'mobileNumber', autofocus: true %>
   </div>
 
@@ -36,7 +36,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
