@@ -13,7 +13,9 @@ class ApplicationController < ActionController::Base
         home_userview_path
     else
       super
+   
    end
   end
+   
 
 end

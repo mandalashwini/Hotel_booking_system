@@ -15,6 +15,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'  %>
     <%= javascript_include_tag 'rails.validations' %>
+   
   </head>
 
   <body>
@@ -25,16 +26,21 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         
         <% if member_signed_in? %>
-        
+
           <li><a href="/home/index">Home</a></li>
           <li><a href="/members/edit">Edit profile</a></li>
           <li><%= link_to 'Sign_out',  destroy_member_session_path,:method => :delete %></li>
         <%else%>
           <li><a href="/home/index">Home</a></li>
-          <li><a href="/members/sign_in">Login</a></li>
           <li><a href="/members/sign_up">User registration</a></li>
-          <li><a href="/members/sign_up">Admin Registration</a></li>
-        <% end %>
+          <li><a href="/members/sign_in">User Login</a></li>
+          <li><%= link_to 'Admin Login',  new_admin_user_session_path %></li>
+          <!-- <ul id="dropdown1" class="dropdown-content">
+          <li><a href="/members/sign_in">User Login</a></li>
+          <li><a href="/members/sign_in">Admin Login</a></li>
+          </ul>
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Login<i class="material-icons right">arrow_drop_down</i></a></li> -->
+        <% end %> 
         </ul>
     </div>
   </nav>
