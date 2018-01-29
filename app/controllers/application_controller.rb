@@ -9,7 +9,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-  home_userview_path
+    if member_signed_in?
+        home_userview_path
+    else
+      super
+   end
   end
 
 end
