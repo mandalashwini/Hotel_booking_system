@@ -11,7 +11,8 @@ end
 ####
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
-
+##
+gem 'activeadmin_addons'
 #####
 gem 'jquery-rails'
 gem 'client_side_validations'

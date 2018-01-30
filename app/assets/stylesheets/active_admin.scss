@@ -15,3 +15,23 @@
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+.inline-errors{
+	display:none;
+}
+
+.message{
+	color:red;
+	margin-left: 23em;
+	width: 100%;
+}
+
+select{
+display: block;
+}
+
+form.filter_form .filter_form_field.select_and_search input[type=text] {
+    margin-left:2px;
+    margin-top: 10px;
+    width: 80px;
+}
