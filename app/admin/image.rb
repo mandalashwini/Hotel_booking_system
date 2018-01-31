@@ -21,7 +21,7 @@ controller do
   private
   
   def image_params
-    params.require(:image).permit(:image)
+    params.require(:images).permit(:image)
   end
  
   def find_imageable
