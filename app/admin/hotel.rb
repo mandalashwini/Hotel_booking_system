@@ -1,5 +1,5 @@
 ActiveAdmin.register Hotel do
-permit_params :name,:rating,:location,:description
+permit_params :name,:rating,:location,:description,:images_attributes
 
 
 form do |f|
@@ -9,10 +9,13 @@ form do |f|
     	f.input :rating
     	f.input :location
 	    f.input :description
-   	f.has_many :images do |image|
+    	f.has_many :images do |image|
    		image.inputs "Images" do
-        		image.input :image,as: :file
-
+        		image.input :image,as: :file,multiple: true,:hint => image.object.image.present? \
+   					? image_tag(image.object.image.url(),:width => "100",:height => "100")
+    			: content_tag(:span, "no image yet")
+        		#image.input :image_cache, as: :hidden
+        		#:hint => image_tag(image.object.image.url)
 		end
 	 end
 
@@ -28,22 +31,31 @@ controller do
   def create
     @hotel = Hotel.create(post1_params)
      if @hotel.update_attributes(post2_params)
-    redirect_to [:admin,@hotel]
+    		redirect_to [:admin,@hotel]
 	else
 		render 'new'
 	end
   end
+
+ 
+  def update
+      @hotel = Hotel.find(params[:id])  
+   print "*******",@hotel       
+      if @hotel.update_attributes(post2_params)
+        redirect_to [:admin, @hotel]
+      else
+        render 'edit'
+      end
+    end
   
   private
   
   def post1_params
-      puts "1111"
-      params.require(:hotel).permit(:name, :rating, :location, :description)
+       params.require(:hotel).permit(:name, :rating, :location, :description)
     end
 
     def post2_params
-      puts "222"
-      params.require(:hotel).permit(:name, :rating, :location, :description,images_attributes: [:id, :image, :image_cache, :_destroy])
+        params.require(:hotel).permit(:name, :rating, :location, :description,images_attributes: [:id, :image, :image_cache, :_destroy])
     end
  
 end

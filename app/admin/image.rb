@@ -18,6 +18,9 @@ controller do
     @imageable.images.create image_params
     redirect_to @imageable
   end
+  def update
+  	puts "aaaaa"
+  end
   private
   
   def image_params
