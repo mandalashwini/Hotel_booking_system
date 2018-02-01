@@ -1,6 +1,10 @@
 ActiveAdmin.register Room do
 permit_params :number_bedrooms,:room_price,:room_type,:inactive_date,:hotel_id
 
+
+  filter:room_price
+  filter:number_bedrooms
+  filter:room_type
  form do |f|
     f.inputs do
     if f.object.new_record?
