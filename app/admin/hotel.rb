@@ -1,11 +1,14 @@
 ActiveAdmin.register Hotel do
-permit_params :name,:rating,:location,:description,:images_attributes
+permit_params :Hotel_Name,:rating,:location,:description,:images_attributes
  
+ filter :Hotel_Name
+ filter :rating
+ filter :location
 
 form do |f|
    ## 
     f.inputs do
-    	f.input :name
+    	f.input :Hotel_Name
     	f.input :rating
     	f.input :location
 	    f.input :description
@@ -21,6 +24,8 @@ form do |f|
 
    	f.actions
   end
+
+
 ####
 end
 controller do
@@ -51,11 +56,11 @@ controller do
   private
   
   def post1_params
-       params.require(:hotel).permit(:name, :rating, :location, :description)
+       params.require(:hotel).permit(:Hotel_Name, :rating, :location, :description)
     end
 
     def post2_params
-        params.require(:hotel).permit(:name, :rating, :location, :description,images_attributes: [:id, :image, :image_cache, :_destroy])
+        params.require(:hotel).permit(:Hotel_Name, :rating, :location, :description,images_attributes: [:id, :image, :image_cache, :_destroy])
     end
  
 end

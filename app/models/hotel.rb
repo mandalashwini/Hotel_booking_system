@@ -5,7 +5,7 @@ class Hotel < ApplicationRecord
 
 	name_REGEX = /\A[A-Za-z ]+\Z/
 	rating_REGEX=/\A[0-9]+\Z/
-    validates :name, :presence => true,  :length => { :in => 3..10 },:format => name_REGEX
+    validates :Hotel_Name, :presence => true,  :length => { :in => 3..10 },:format => name_REGEX
     validates :location, :presence => true,  :length => { :in => 3..10 },:format => name_REGEX
 	 validates :rating, :presence => true
 	validates_numericality_of :rating, :only_integer => true, 
