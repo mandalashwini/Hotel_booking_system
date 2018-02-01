@@ -11,6 +11,7 @@ ActiveAdmin.register Image do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+actions :all, except: :new
 controller do
 	before_action :find_imageable
   

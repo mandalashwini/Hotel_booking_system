@@ -1,6 +1,6 @@
 ActiveAdmin.register Hotel do
 permit_params :name,:rating,:location,:description,:images_attributes
-
+ 
 
 form do |f|
    ## 
@@ -9,11 +9,11 @@ form do |f|
     	f.input :rating
     	f.input :location
 	    f.input :description
-    	f.has_many :images do |image|
+    	f.has_many :images  do |image|
    		image.inputs "Images" do
         		image.input :image,as: :file,multiple: true,:hint => image.object.image.present? \
    					? image_tag(image.object.image.url(),:width => "100",:height => "100")
-    			: content_tag(:span, "no image yet")
+    			: content_tag(:span, "image not found")
         		#image.input :image_cache, as: :hidden
         		#:hint => image_tag(image.object.image.url)
 		end

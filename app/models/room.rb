@@ -12,5 +12,5 @@ class Room < ApplicationRecord
     :greater_than_or_equal_to => 1,
     :less_than_or_equal_to => 99999,
     :message => "accept only whole number between 1 and 99999."
-    accepts_nested_attributes_for :images
+     accepts_nested_attributes_for :images, allow_destroy: true, reject_if: proc { |attributes| attributes[:image].nil? }
 end
