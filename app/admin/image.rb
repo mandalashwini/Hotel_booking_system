@@ -11,21 +11,20 @@ ActiveAdmin.register Image do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-actions :all, except: :new
+#actions :all, except: :new
 controller do
 	before_action :find_imageable
   
   def create
     @imageable.images.create image_params
+    puts @imageable.class
     redirect_to @imageable
   end
-  def update
-  	puts "aaaaa"
-  end
+
   private
   
   def image_params
-    params.require(:images).permit(:image)
+    params.require(:image).permit(:image)
   end
  
   def find_imageable
@@ -37,4 +36,4 @@ controller do
 ###
  end
 
-end
+end 

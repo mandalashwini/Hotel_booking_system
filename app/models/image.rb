@@ -1,6 +1,6 @@
 class Image < ApplicationRecord
 	before_validation :assign_imageable
-	mount_uploader :image
+	mount_uploader :image, ImageUploader
 	belongs_to :imageable,polymorphic: true
 
 
@@ -15,18 +15,15 @@ class Image < ApplicationRecord
 
 
 def imageable_hotel
-    puts "1111"
-    self.imageable.id if self.imageable.is_a? Hotel
+      self.imageable.id if self.imageable.is_a? Hotel
   end
 
   def imageable_room
-    puts "2222"
-    self.imageable.id if self.imageable.is_a? Room
+     self.imageable.id if self.imageable.is_a? Room
   end
 
   protected
   def assign_imageable
-  	puts "0000"
     if !@imageable_hotel.blank? && !@imageable_room.blank?
 	  errors.add(:imageable, "can't have both a hotel and a room") 
     else
