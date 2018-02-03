@@ -15,6 +15,7 @@ gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'activeadmin_addons'
 #####
+gem 'mini_magick'
 gem 'jquery-rails'
 gem 'client_side_validations'
 gem 'carrierwave'
