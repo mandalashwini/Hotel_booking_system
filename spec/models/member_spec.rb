@@ -68,7 +68,7 @@ RSpec.describe Member, type: :model do
 	    		 member.mobileNumber="123"
 				member.mobileNumber.match(mb_REGEX)
 				member.save
-				expect(member.errors.messages[:mobileNumber]).to eql(["is invalid"])
+				expect(member.errors.messages[:mobileNumber]).to eql(["only numbers allows"])
 		   end
 
 		    it " mobileNumber is valid " do

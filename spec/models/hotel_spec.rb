@@ -17,7 +17,7 @@ RSpec.describe Hotel, type: :model do
 				expect(hotel.errors.messages[:name][0]).to eql("can't be blank")
 		   end
 
-		   it "hotel name is invalid.." do
+		   it "hotel name is invalid..only allows letters" do
 	    		   hotel.name="123"
 			   hotel.name.match(name_REGEX)
 			   hotel.save
@@ -64,11 +64,11 @@ describe "Hotel Location validation" do
 				expect(hotel.errors.messages[:rating][0]).to eql("can't be blank")
 		   end
 
-		   it "hotel rating is invalid.." do
+		   it "hotel rating is invalid..accept only whole number between 1 and 10." do
 	    	   hotel.rating="123"
 			   #hotel.rating
 			   hotel.save
-				expect(hotel.errors.messages[:rating]).to eql(["is invalid"])
+				expect(hotel.errors.messages[:rating]).to eql(["accept only whole number between 1 and 10."])
 		   end
 
 		    it " hotel rating valid " do
