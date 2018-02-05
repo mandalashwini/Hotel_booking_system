@@ -3,6 +3,9 @@ class Room < ApplicationRecord
 	has_many :images, as: :imageable,dependent: :destroy
 
 	validates :hotel_id ,presence: true
+	validates :room_type ,presence: true
+	validates :number_bedrooms ,presence: true
+	
 	
 	rating_REGEX=/\A[0-9]+\Z/
 
