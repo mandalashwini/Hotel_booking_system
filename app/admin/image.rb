@@ -9,7 +9,7 @@ controller do
     redirect_to @imageable
   end
 
-  private
+    private
   
   def image_params
     params.require(:image).permit(:image)
