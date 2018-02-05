@@ -21,7 +21,7 @@ RSpec.describe Member, type: :model do
 	    		 member.firstName="123"
 				member.firstName.match(name_REGEX)
 				member.save
-				expect(member.errors.messages[:firstName]).to eql(["is invalid"])
+				expect(member.errors.messages[:firstName]).to eql(["only allows letters"])
 		   end
 
 		    it " first name valid " do
@@ -44,7 +44,7 @@ RSpec.describe Member, type: :model do
 	    		 member.lastName="123"
 				member.lastName.match(name_REGEX)
 				member.save
-				expect(member.errors.messages[:lastName]).to eql(["is invalid"])
+				expect(member.errors.messages[:lastName]).to eql(["only allows letters"])
 		   end
 
 		    it " lastName valid " do

@@ -21,7 +21,7 @@ RSpec.describe Hotel, type: :model do
 	    		   hotel.name="123"
 			   hotel.name.match(name_REGEX)
 			   hotel.save
-				expect(hotel.errors.messages[:name]).to eql(["is invalid"])
+				expect(hotel.errors.messages[:name]).to eql(["only allows letters"])
 		   end
 
 		    it " hotel name valid " do
@@ -31,4 +31,51 @@ RSpec.describe Hotel, type: :model do
 		   end
 	end
 
+
+describe "Hotel Location validation" do
+		 name_REGEX1 = /\A[A-Za-z]+\Z/
+
+			it " hotel location can't be blank" do
+				hotel.location = nil
+				hotel.save
+				expect(hotel.errors.messages[:location][0]).to eql("can't be blank")
+		   end
+
+		   it "hotel location is invalid.." do
+	    		   hotel.location="123"
+			   hotel.location.match(name_REGEX1)
+			   hotel.save
+				expect(hotel.errors.messages[:location]).to eql(["is invalid"])
+		   end
+
+		    it " hotel name valid " do
+		   		   hotel.location="11abc"
+			      hotel.location.match(name_REGEX1)
+			expect((hotel.errors.messages[:location]).empty?).to eql(true)
+		   end
+	end
+
+
+	describe "Hotel rating validation" do
+		 rt_REGEX = /\A[0-9]{1}+\Z/
+		   it " hotel rating can't be blank" do
+				hotel.rating = nil
+				hotel.save
+				expect(hotel.errors.messages[:rating][0]).to eql("can't be blank")
+		   end
+
+		   it "hotel rating is invalid.." do
+	    	   hotel.rating="123"
+			   #hotel.rating
+			   hotel.save
+				expect(hotel.errors.messages[:rating]).to eql(["is invalid"])
+		   end
+
+		    it " hotel rating valid " do
+		   		   hotel.rating="11abc"
+			    #  hotel.rating.match(rt_REGEX)
+			expect((hotel.errors.messages[:rating]).empty?).to eql(true)
+		   end
+			
+	end
 end
