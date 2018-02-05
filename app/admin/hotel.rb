@@ -15,7 +15,7 @@ form do |f|
     	f.has_many :images  do |image|
    		image.inputs "Images" do
         		image.input :image,as: :file,multiple: true,:hint => image.object.image.present? \
-   					? image_tag(image.object.image.url(:thumb),:width => "20%",:height => "20%")
+   					? image_tag(image.object.image.url(),:width => "20%",:height => "20%")
     			: content_tag(:span, "image not found")
         		#image.input :image_cache, as: :hidden
         		#:hint => image_tag(image.object.image.url)
