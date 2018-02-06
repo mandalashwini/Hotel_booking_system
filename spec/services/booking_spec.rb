@@ -3,10 +3,10 @@ require 'rails_helper'
 describe "In-booking" do
 
 	context "user must be login with valid emailid and password" do
-		context "When is user not login "do
+		context "When user is not logged in "do
 			it "it should notify to login first.." do end
 		end
-		context "When is user login "do
+		context "When user is logged in "do
 			it "it should return login status"do end
 		end
 	end

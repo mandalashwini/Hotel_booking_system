@@ -15,35 +15,47 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'  %>
     <%= javascript_include_tag 'rails.validations' %>
-   
+  
   </head>
 
   <body>
      <!--nav bar-->
+     <header>
       <nav>
-    <div class="nav-wrapper" >
-      <a href="#" class="brand-logo">Welcome</a>
+     <div class="nav-wrapper" >
+      <a href="#" class="brand-logo"><span style="color: red">Welcome</span></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         
         <% if member_signed_in? %>
 
-          <li><a href="/home/index">Home</a></li>
+          <li><a href="#">Home</a></li>
           <li><a href="/members/edit">Edit profile</a></li>
           <li><%= link_to 'Sign_out',  destroy_member_session_path,:method => :delete %></li>
         <%else%>
-          <li><a href="/home/index">Home</a></li>
+          <li><a href="#">Home</a></li>
           <li><a href="/members/sign_up">User registration</a></li>
           <li><a href="/members/sign_in">User Login</a></li>
           <li><%= link_to 'Admin Login',  new_admin_user_session_path %></li>
-          <!-- <ul id="dropdown1" class="dropdown-content">
-          <li><a href="/members/sign_in">User Login</a></li>
-          <li><a href="/members/sign_in">Admin Login</a></li>
-          </ul>
-          <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Login<i class="material-icons right">arrow_drop_down</i></a></li> -->
         <% end %> 
         </ul>
     </div>
   </nav>
+</header>
+
+<section class="search-bar">
+  <div class="container">
+     <div class="search-bar-div">
+      <ul>
+      <li class="search-input"><input type="text" name="location" placeholder="location or Hotel name"></li>
+      <li class="search-input"><input type="date" name="Check_in date" placeholder="check in"></li>
+      <li class="search-input"><input type="date" name="Check_out date" placeholder="check out"></li>
+      <li ><a class="waves-effect waves-light btn"><i class="material-icons left">search</i>Search</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
 
      <p class="notice"><%= notice %></p>
      <p class="alert"><%= alert %></p>
