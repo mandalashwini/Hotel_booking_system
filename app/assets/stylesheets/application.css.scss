@@ -30,6 +30,10 @@
 	background-color: #020101;
 	
 }
+
+nav ul a:hover{
+background-color: red;
+}
 body {
 	background-image:url(images2.jpeg);
 	background-repeat: no-repeat;
@@ -55,10 +59,16 @@ body {
 .search-input input[type=text] input[type=date]{
 	border-bottom:none;
 }
+.search-input input[type=date]{
+	
+}
 
 
 
 .waves-effect {
 	background-color: red;
-	margin-top: 1%;
+    margin-top: 0%;
+    padding-top: 14px;
+    height: 4.4em;
+    margin-left: 8px;
 }
