@@ -6,8 +6,8 @@ class HomeController < ApplicationController
   	render plain: params.inspect
     puts params[:location].class
     @param=params[:location]
-    so=Search_operations.new(@param)
-    so.hotel_search
+    operations_Object=Search_operations.new(@param)
+    operations_Object.search_hotel_function
   end
 
 

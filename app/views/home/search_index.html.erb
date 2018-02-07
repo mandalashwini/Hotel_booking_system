@@ -2,14 +2,48 @@
 <head>
 	<title></title>
 	<%= stylesheet_link_tag    'home', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <script>
+  function myFunction() {
+    // Declare variables
+    var input, filter, ul, li, a, i;
+    input = document.getElementById('location');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName('li');
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
 </head>
 <section class="search-bar">
   <div class="container">
      <div class="search-bar-div">
        <ul>
       	<div>
-      		<li class="search-label"> <%= label_tag :"Search hotel" %></li>
-       		<li class="search-input"> <%= text_field_tag :location, params[:location], placeholder: "Location or Hotel name" %></li>
+      		<li class="search-label"> <%= label_tag :"Search hotel"  %></li>
+       		<li class="search-input"> <%= text_field_tag :location, params[:location], onkeyup:'myFunction()', :autocomplete => :off,placeholder: "Location or Hotel name"%>
+           
+           <ul id="myUL">
+             <li><a href="#">Adele</a></li>
+             <li><a href="#">Agnes</a></li>
+
+             <li><a href="#">Billy</a></li>
+             <li><a href="#">Bob</a></li>
+
+             <li><a href="#">Calvin</a></li>
+             <li><a href="#">Christina</a></li>
+             <li><a href="#">Cindy</a></li>
+           </ul>
+           
+          </li>
     	</div>
       	<div>
      		
@@ -25,4 +59,4 @@
     </div>
   </div>
 </section>
- <% end %>
+<% end %>
