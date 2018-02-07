@@ -28,11 +28,11 @@
         
         <% if member_signed_in? %>
 
-          <li><a href="#">Home</a></li>
+          <li><a href="/home/search_index">Home</a></li>
           <li><a href="/members/edit">Edit profile</a></li>
           <li><%= link_to 'Sign_out',  destroy_member_session_path,:method => :delete %></li>
         <%else%>
-          <li><a href="#">Home</a></li>
+          <li><a href="/home/search_index">Home</a></li>
           <li><a href="/members/sign_up">User registration</a></li>
           <li><a href="/members/sign_in">User Login</a></li>
           <li><%= link_to 'Admin Login',  new_admin_user_session_path %></li>

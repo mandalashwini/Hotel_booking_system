@@ -1,20 +1,15 @@
-
-
-<!DOCTYPE html>
-<html>
+<%= form_tag({:controller=> "home", :action=>"userview"},:method=>"get")do %>
 <head>
 	<title></title>
 	<%= stylesheet_link_tag    'home', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
-<body>
-	
 <section class="search-bar">
   <div class="container">
      <div class="search-bar-div">
        <ul>
       	<div>
-      		<li class="search-label">Hotel Search</li>
-       		<li class="search-input"><input type="text" name="location" placeholder="Location or Hotel name"></li>
+      		<li class="search-label"> <%= label_tag :location %></li>
+       		<li class="search-input"> <%= text_field_tag :location, params[:location] %></li>
     	</div>
       	<div>
       		<li class="search-label"> Check In</li>
@@ -24,11 +19,9 @@
   	  		<li class="search-label">Check Out</li>
     	  <li class="search-input"><input type="date" name="Check_out date" placeholder="check out"></li>
   		</div>
-      		<li><a class="waves-effect waves-light btn"><i class="material-icons left">search</i>Search</a></li>
+      		<li><%= submit_tag "search", class: "btn btn-large btn-primary search-button" %></li>
       </ul>
     </div>
   </div>
 </section>
-
-
-</body>
+ <% end %>

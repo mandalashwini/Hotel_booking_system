@@ -12,5 +12,5 @@ class Member < ApplicationRecord
   validates :mobileNumber, :presence => true,format: { with: /\A[0-9]{10}+\z/, message: "only numbers allows" }
   validates :email, :presence => true, :uniqueness => true, :format => EMAIL_REGEX
 
-  mount_uploader :image
+  mount_uploader :image 
  end
