@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/search_index'
   get 'home/userview'
-  root 'home#index'
+  root 'home#search_index'
   
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   authenticated :member do
