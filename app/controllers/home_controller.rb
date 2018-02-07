@@ -4,9 +4,10 @@ class HomeController < ApplicationController
   def userview
   #	render plain: params[:location].inspect
   	render plain: params.inspect
-    puts params.inspect
-
-
+    puts params[:location].class
+    @param=params[:location]
+    so=Search_operations.new(@param)
+    so.hotel_search
   end
 
 

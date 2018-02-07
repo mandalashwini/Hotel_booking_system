@@ -8,8 +8,8 @@
      <div class="search-bar-div">
        <ul>
       	<div>
-      		<li class="search-label"> <%= label_tag :location %></li>
-       		<li class="search-input"> <%= text_field_tag :location, params[:location] %></li>
+      		<li class="search-label"> <%= label_tag :"Search hotel" %></li>
+       		<li class="search-input"> <%= text_field_tag :location, params[:location], placeholder: "Location or Hotel name" %></li>
     	</div>
       	<div>
      		
