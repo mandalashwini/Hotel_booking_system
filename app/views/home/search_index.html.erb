@@ -1,7 +1,7 @@
-<%= form_tag({:controller=> "home", :action=>"userview"},:method=>"get")do %>
+<%= form_tag({:controller=> "search", :action=>"searchView"},:method=>"get")do %>
 <head>
 	<title></title>
-	<%= stylesheet_link_tag    'home', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= stylesheet_link_tag 'home', media: 'all', 'data-turbolinks-track': 'reload' %>
   <script>
   function myFunction() {
     // Declare variables
@@ -29,8 +29,12 @@
        <ul>
       	<div>
       		<li class="search-label"> <%= label_tag :"Search hotel"  %></li>
-       		<li class="search-input"> <%= text_field_tag :location, params[:location], onkeyup:'myFunction()', :autocomplete => :off,placeholder: "Location or Hotel name"%>
-           
+       		<li class="search-input"> 
+
+
+
+  <%= select_tag "hotels", options_for_select(@hotels.map{ |hotel| [hotel.location ]}) %>
+          <!--  
            <ul id="myUL">
              <li><a href="#">Adele</a></li>
              <li><a href="#">Agnes</a></li>
@@ -42,8 +46,9 @@
              <li><a href="#">Christina</a></li>
              <li><a href="#">Cindy</a></li>
            </ul>
-           
+            -->
           </li>
+
     	</div>
       	<div>
      		
@@ -54,9 +59,10 @@
   	  		<li class="search-label">Check Out</li>
     	  <li class="search-input"><input type="date" name="check_out_date" placeholder="check out"></li>
   		</div>
-      		<li><%= submit_tag "search", class: "btn btn-large btn-primary search-button" %>Search</li>
+         <li> <input type="submit" onClick="search_string_validate.stringValidate()"></li>
       </ul>
     </div>
   </div>
+
 </section>
 <% end %>

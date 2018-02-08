@@ -5,7 +5,7 @@ class Search_operations
 		@search_string=param
 
 	end
-	def search_hotel_function
+	def hotel_search_function
 		puts Hotel.find_by_location(@search_string).inspect
 	end
 end
