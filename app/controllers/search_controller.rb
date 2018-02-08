@@ -5,11 +5,10 @@ class SearchController < ApplicationController
   def searchView
   	 #	render plain: params[:location].inspect
   	 @hotels=Hotel.all
-  	render plain: params.inspect
-    puts params[:hotels].class
-    @param=params[:hotels]
-    operations_Object=Search_operations.new(@param)
-    operations_Object.hotel_search_function
- 
+  #render plain: params.inspect
+    puts params[:location]
+    #@param=params[:location]
+    searchObj=Search_operations.new(params[:location])
+    searchObj.searchHotel
   end
 end

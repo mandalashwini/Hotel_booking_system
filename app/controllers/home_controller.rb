@@ -14,7 +14,7 @@ class HomeController < ApplicationController
     puts params[:location].class
     @param=params[:location]
     operations_Object=Search_operations.new(@param)
-    operations_Object.search_hotel_function
+    operations_Object.searchHotel
   end
 
 
