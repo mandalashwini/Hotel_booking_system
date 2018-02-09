@@ -12,7 +12,7 @@ end
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 ##
-gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'ransack'
 gem 'activeadmin_addons'
 #####
 gem 'mini_magick'

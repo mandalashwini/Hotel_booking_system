@@ -1,14 +1,10 @@
 class SearchController < ApplicationController
-  def index
-  	@hotels=Hotel.all
-  end
+  
   def searchView
-  	 #	render plain: params[:location].inspect
-  	 @hotels=Hotel.all
-  #render plain: params.inspect
-    puts params[:location]
-    #@param=params[:location]
-    searchObj=Search_operations.new(params[:location])
+    @search=Hotel.search(params[:name_cont])
+    @hotels=@search.result
+    puts @hotels.inspect
+    searchObj=Search_operations.new(params[:name_cont])
     searchObj.searchHotel
   end
 end

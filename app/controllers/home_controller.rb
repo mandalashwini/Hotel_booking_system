@@ -1,11 +1,11 @@
 class HomeController < ApplicationController
   def index
-  	@hotels=Hotel.all
+    
   end
 
   def search_index
-  	@hotels=Hotel.all
-  	puts @hotel.inspect
+  @search=Hotel.search(params[:q])
+  @hotels=@search.result
   end
 
   def userview
