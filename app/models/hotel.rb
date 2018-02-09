@@ -2,7 +2,7 @@ class Hotel < ApplicationRecord
 	has_many :rooms ,dependent: :destroy
 	#has_many :images, as: :imageable
 	has_many :images, as: :imageable, dependent: :destroy
-
+	
 	
 	rating_REGEX=/\A[0-9]{1}+\Z/
 	location_REGEX = /\A[A-Za-z]+\Z/
