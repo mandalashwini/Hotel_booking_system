@@ -4,8 +4,8 @@
      <div class="search-bar-div">
        <ul>
       	<div>
-      		<li class="search-label"> <%= f.label :name_cont,"Search hotel"  %></li>
-       		<li class="search-input"> <%= f.text_field :name_cont,  onkeyup:'myFunction()', :autocomplete => :off,placeholder: "Location or Hotel name",:required =>true,:pattern => '[a-zA-Z]+', maxlength: 20, minlength: 3%>
+      		<li class="search-label"> <%= f.label :name_or_location_start,"Search hotel"  %></li>
+       		<li class="search-input"> <%= f.text_field :name_or_location_start,  onkeyup:'myFunction()', :autocomplete => :off,placeholder: "Location or Hotel name",:required =>true,:pattern => '[a-zA-Z]+', maxlength: 20, minlength: 3%>
            <!-- oninvalid: "setCustomValidity('Plz enter on Alphabets ')" -->
            <ul class="myUL">
              <li><a href="#">Adele</a></li>

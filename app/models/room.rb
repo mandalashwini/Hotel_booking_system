@@ -1,5 +1,7 @@
 class Room < ApplicationRecord
 	belongs_to :hotel
+	has_many :bookings, through: :room_booking
+
 	has_many :images, as: :imageable,dependent: :destroy
 
 	validates :hotel_id ,presence: true

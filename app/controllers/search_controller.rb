@@ -1,10 +1,11 @@
 class SearchController < ApplicationController
   
   def searchView
-    @search=Hotel.search(params[:name_cont])
-    @hotels=@search.result
-    puts @hotels.inspect
-    searchObj=Search_operations.new(params[:name_cont])
+    @search=Hotel.search(params[:q])
+    #@hotels=@search.result(distinct: true)
+    #puts @hotels.inspect
+    searchObj=Search_operations.new(params[:q])
     searchObj.searchHotel
+    searchObj.searchRooms
   end
 end

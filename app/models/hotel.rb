@@ -3,7 +3,6 @@ class Hotel < ApplicationRecord
 	#has_many :images, as: :imageable
 	has_many :images, as: :imageable, dependent: :destroy
 	
-	
 	rating_REGEX=/\A[0-9]{1}+\Z/
 	location_REGEX = /\A[A-Za-z]+\Z/
     validates :name,presence: true,format: { with: /\A[A-Za-z0-9 ]+[A-Za-z ]+[a-zA-Z0-9]+\Z/, message: "only allows letters" }, length: { in: 3..20, message:"max length is 20 characters"}

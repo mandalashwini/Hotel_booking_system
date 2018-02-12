@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180201071111) do
+ActiveRecord::Schema.define(version: 20180212072025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,14 @@ ActiveRecord::Schema.define(version: 20180201071111) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.date "checkinDate"
+    t.date "checkoutDate"
+    t.date "bookingDate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "hotels", force: :cascade do |t|
@@ -86,6 +94,15 @@ ActiveRecord::Schema.define(version: 20180201071111) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
+  create_table "room_bookings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "room_id"
+    t.bigint "booking_id"
+    t.index ["booking_id"], name: "index_room_bookings_on_booking_id"
+    t.index ["room_id"], name: "index_room_bookings_on_room_id"
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.integer "number_bedrooms"
     t.date "inactive_date"
@@ -98,5 +115,7 @@ ActiveRecord::Schema.define(version: 20180201071111) do
     t.index ["hotel_id"], name: "index_rooms_on_hotel_id"
   end
 
+  add_foreign_key "room_bookings", "bookings"
+  add_foreign_key "room_bookings", "rooms"
   add_foreign_key "rooms", "hotels"
 end
