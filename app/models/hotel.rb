@@ -17,6 +17,6 @@ class Hotel < ApplicationRecord
 
 
   accepts_nested_attributes_for :images, allow_destroy: true, reject_if: proc { |attributes| attributes[:image].nil? }
-
+	
 
 end

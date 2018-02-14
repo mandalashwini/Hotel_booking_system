@@ -3,12 +3,9 @@ class SearchController < ApplicationController
   	@hotels=Hotel.all
   end
   def searchView
-  	 #	render plain: params[:location].inspect
-  	 @hotels=Hotel.all
-  #render plain: params.inspect
-    puts params[:location]
-    #@param=params[:location]
-    searchObj=Search_operations.new(params[:location])
-    searchObj.searchHotel
+  	render plain: params.inspect
+    searchObj=Search_operations.new(params)
+    @searchResult=searchObj.searchHotel
+    puts "In SearchController",@searchResult.inspect
   end
 end
