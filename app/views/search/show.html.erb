@@ -4,15 +4,18 @@
  
 <table>
   <tr>
+    <th>Room Id</th>
     <th>Room Price</th>
     <th >Room Type</th>
     <th >Number of Bedrooms</th>
   </tr>
    <% @searchRoomResult.each do |result| %>
     <tr>
+      <td><a href><%= result.id %></td></a>
       <td><a href><%= result.room_price %></td></a>
       <td><a href><%= result.number_bedrooms %></td></a>
       <td><a href><%= result.room_type %></td></a>
+
     </tr>
   <% end %>
 </table>
