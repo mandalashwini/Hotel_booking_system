@@ -4,24 +4,32 @@ class Search_operations
 		@name_or_location=params[:location_or_hotelname]
 		@checkinDate=params[:checkinDate]
 		@checkoutDate=params[:checkoutDate]
+		puts @a=params[:id]
 		puts @checkinDate
 		puts "11hello",@name_or_location
 		
 	end
 	
 	def searchHotel
-		 brooms=Room.joins(:bookings).select("id").where('("checkinDate" BETWEEN ? AND ?) OR ("checkoutDate" BETWEEN ? AND ?) ',@checkinDate,@checkoutDate,@checkinDate,@checkoutDate)
-		 availHotelRooms=Hotel.joins(:rooms).where.not(:rooms => {id: brooms} ).uniq
-		 puts "availHotelRooms",availHotelRooms.inspect
-		 puts "hiii"
+		 @brooms=Room.joins(:bookings).select("id").where('("checkinDate" BETWEEN ? AND ?) OR ("checkoutDate" BETWEEN ? AND ?) ',@checkinDate,@checkoutDate,@checkinDate,@checkoutDate)
+		 availHotelRooms=Hotel.joins(:rooms).where.not(:rooms => {id: @brooms} ).uniq
+		searchHotelResult= Hotel.where("name ILIKE ? OR location ILIKE ?","#{@name_or_location}%","#{@name_or_location}%").uniq
+		@searchResult=availHotelRooms & searchHotelResult
 		
-	# puts "#{@checkinDate}"
-	name_or_location = @name_or_location+"%"
-		searchHotelResult= Hotel.where("name ILIKE ? OR location ILIKE ?",name_or_location,"#{@name_or_location}%").uniq
-		puts "searchHotelResult",searchHotelResult.inspect
-		searchResult=availHotelRooms & searchHotelResult
-		puts "searchResult",searchResult.inspect
-		return searchResult 
+		end
+
+	def searchRooms
+
+			#  @result=Room.joins(:hotel).where('hotel_id':@searchResult)
+			# brooms=Room.joins(:bookings).select("id").where('("checkinDate" BETWEEN ? AND ?) OR ("checkoutDate" BETWEEN ? AND ?) ',@checkinDate,@checkoutDate,@checkinDate,@checkoutDate)
+			 #bbrooms=(Room.joins(:bookings).select("id"))-brooms
+			 puts "yyyyy"
+
+			 #puts bbrooms.inspect
+			# puts params.inspect
+			 @searchRoomResult=Room.all.where(hotel_id: @a ).where.not(:rooms => {id: @brooms} )
+
+		
 	end
 		
 end

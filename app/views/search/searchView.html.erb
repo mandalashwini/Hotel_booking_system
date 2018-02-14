@@ -1,1 +1,18 @@
 <p><span style="color: white">search hotel</span></p>
+<body text="white">
+	<p>Listing Hotels</p>
+ 
+<table>
+  <tr>
+    <th>Hotel Name</th>
+    <th >Location</th>
+  </tr>
+   <% @searchHotelResult.each do |result| %>
+    <tr>
+      <td><a href><%= result.name %></td></a>
+      <td><a href><%= result.location %></td></a>
+       <td><%= link_to 'show', search_path(result) %></t
+    </tr>
+  <% end %>
+</table>
+</body>

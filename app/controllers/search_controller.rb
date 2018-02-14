@@ -1,11 +1,27 @@
 class SearchController < ApplicationController
-  def index
-  	@hotels=Hotel.all
+        def new
+
+        end
+        def index
+        	@hotels=Hotel.all
+        end
+
+        def searchView
+          @searchObj=Search_operations.new(params)
+          @searchHotelResult=@searchObj.searchHotel
+          @searchRoomResult=@searchObj.searchRooms
+          puts "777777"
+          puts @searchRoomResult
+          @searchRoomResult
+#
+        end
+
+        def show
+           puts params  
+           @searchObj=Search_operations.new(params)
+           #@searchRoomResult=Room.all.where(hotel_id: params[:id])
+           @searchRoomResult=@searchObj.searchRooms()
+         end
+
+
   end
-  def searchView
-  	render plain: params.inspect
-    searchObj=Search_operations.new(params)
-    @searchResult=searchObj.searchHotel
-    puts "In SearchController",@searchResult.inspect
-  end
-end
