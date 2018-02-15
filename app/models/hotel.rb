@@ -14,9 +14,9 @@ class Hotel < ApplicationRecord
     :less_than_or_equal_to => 10,
     :message => "accept only whole number between 1 and 10."
  # validates :rating, :presence => true,format: { with: /\A[0-9]{1}+\z/, message: "only numbers allows" },length: { in: 1, message:"only one digit number is allowed"}
-
-
-  accepts_nested_attributes_for :images, allow_destroy: true, reject_if: proc { |attributes| attributes[:image].nil? }
+	accepts_nested_attributes_for :images, allow_destroy: true, reject_if: proc { |attributes| attributes[:image].nil? }
 	
+
+	 scope :hotelsearchResult,->(booking_rooms,name_or_location){ joins(:rooms).where.not(:rooms => {id: booking_rooms} ).where("name ILIKE ? OR location ILIKE ?","#{name_or_location}%","#{name_or_location}%").uniq}
 
 end
