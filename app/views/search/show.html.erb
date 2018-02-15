@@ -1,7 +1,10 @@
-<p><span style="color: white">search Rooms</span></p>
-<body text="white">
-	<p>Listing Rooms</p>
- 
+<%= form_tag({:controller=> "booking", :action=>"roomBook"},:method=>"get")do %>
+<head>
+  <%= stylesheet_link_tag 'search', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <div class="container" >
+	 <p><span style="color: white">Rooms List</span></p>
 <table>
   <tr>
     <th>Room Id</th>
@@ -15,8 +18,12 @@
       <td><a href><%= result.room_price %></td></a>
       <td><a href><%= result.number_bedrooms %></td></a>
       <td><a href><%= result.room_type %></td></a>
-
+      <td><input type="checkbox" name="rooms">  </td>
     </tr>
   <% end %>
 </table>
+<br>
+  <%= submit_tag "Book Now", class: "btn btn-large btn-primary search-button"  %>
+ </div>
 </body>
+<% end %>

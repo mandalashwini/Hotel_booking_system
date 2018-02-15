@@ -17,6 +17,6 @@ class SearchController < ApplicationController
            @searchRoomResult=@searchObj.searchRooms()
            puts "!!!!",@searchRoomResult
          end
-
+        
 
   end
