@@ -1,22 +1,16 @@
 class SearchController < ApplicationController
-        def new
-
-        end
-        def index
-        	@hotels=Hotel.all
-        end
-
+        
         def searchView
           @searchObj=Search_operations.new(params)
           @searchHotelResult=@searchObj.searchHotel
+          @searchHotelResult = Kaminari.paginate_array(@searchHotelResult).page(params[:page]).per(1)
         end
 
         def show
            @searchObj=Search_operations.new(params)
-           #@searchRoomResult=Room.all.where(hotel_id: params[:id])
            @searchRoomResult=@searchObj.searchRooms()
-           puts "!!!!",@searchRoomResult
-         end
+           @searchRoomResult=@searchRoomResult.page(params[:page]).per(1)
+           end
         
 
   end

@@ -23,7 +23,8 @@
   <% end %>
 </table>
 <br>
-  <%= submit_tag "Book Now", class: "btn btn-large btn-primary search-button"  %>
+  <%= submit_tag "Book Now", class: "btn btn-large btn-primary search-button" %>
  </div>
+  <%= paginate @searchRoomResult %>
 </body>
 <% end %>

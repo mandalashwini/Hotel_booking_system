@@ -8,7 +8,7 @@ class HomeController < ApplicationController
   end
 
   def userview
-  #	render plain: params[:location].inspect
+  
   	
   end
 

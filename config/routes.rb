@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   devise_for :members, controllers: { registrations: "registrations" }
   resources :members 
   resources :search
-  resources :booking
+ 
   get 'booking/roomBook'
   get 'search/show'
   get 'home/index'
