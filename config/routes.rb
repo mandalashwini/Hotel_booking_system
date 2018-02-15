@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :members 
   resources :search
  
-  get 'booking/roomBook'
+  get 'booking/checkLoginStatus'
   get 'search/show'
   get 'home/index'
   get 'home/search_index'
