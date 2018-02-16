@@ -1,14 +1,21 @@
 class BookingController < ApplicationController
-  
+  def confirmBooking
+   @flag=1
+  end
   
   def roomBook
       if member_signed_in?
           if params[:result]!=nil
-              setBookingStatus
-               flash.now[:alert] = 'Booking Success!!'
-            else
-               flash.now[:alert] = 'Rooms Not Selected!!'
-             end
+                  puts params.inspect
+                  confirmBooking
+                  if @flag==1
+                    setBookingStatus
+                    @flag=0
+                  end
+          else
+                session[:return_to] ||= request.referer
+                redirect_to request.referer
+          end
       else
         redirect_to '/members/sign_in'
       end
