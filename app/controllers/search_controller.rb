@@ -17,13 +17,7 @@ class SearchController < ApplicationController
           Rails.cache.write("checkinDate",params[:checkinDate])
           Rails.cache.write("checkoutDate",params[:checkoutDate])
           Rails.cache.write("bookingDate",Date.today)
-          #response1 = Rails.cache.read("checkinDate")
-          #response2 = Rails.cache.read("checkoutDate")
-          #response3 = Rails.cache.read("bookingDate")
-          #puts "qqqq",response1          
           
-          #puts "qqqq",response2          
-          #puts "qqqq",response3          
         end        
 
   end
