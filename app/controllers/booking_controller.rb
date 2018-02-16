@@ -31,8 +31,13 @@ class BookingController < ApplicationController
           @roomsList.push(Room.find(rooms.to_i))
         end
         newBooking.rooms << @roomsList      
-      
-
   end
+
+  def myBooking
+    bookingobj=Booking_operations.new
+   # puts "id====",current_member.id  
+    bookingobj.showMyBooking(current_member.id)
+  end
+
 
  end

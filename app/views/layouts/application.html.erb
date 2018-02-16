@@ -28,6 +28,7 @@
         
         <% if member_signed_in? %>
           <li><a href="/home/search_index">Home</a></li>
+          <li><a href="/booking/myBooking">My Booking</a></li>
           <li><a href="/members/edit">Edit profile</a></li>
           <li><%= link_to 'Sign_out',  destroy_member_session_path,:method => :delete %></li>
         <%else%>
