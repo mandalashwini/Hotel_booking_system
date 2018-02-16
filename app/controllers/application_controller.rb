@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
     def store_user_location!
       # :user is the scope we are authenticating
       store_location_for(:member, request.fullpath)
+     
     end 
 
 

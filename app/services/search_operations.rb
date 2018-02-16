@@ -5,9 +5,8 @@ class Search_operations
 		@checkinDate=params[:checkinDate]
 		@checkoutDate=params[:checkoutDate]
 	    @hotel_id=params[:id]
-		
-		
-	end
+	   
+	 end
 	
 	def searchHotel
 		@booking_rooms=Room.bookingrooms(@checkinDate,@checkoutDate)
@@ -15,7 +14,12 @@ class Search_operations
        end
 
 	def searchRooms
-			@roomShow=Room.roomsearchResult(@hotel_id,@booking_rooms) 
+		@roomShow=Room.roomsearchResult(@hotel_id,@booking_rooms) 
 	end
-		
+	
+    def setCache
+    	Rails.cache.write("checkinDate", @checkinDate)
+    	response = Rails.cache.("checkinDate")
+    	puts "qqqq",response
+    end
 end	

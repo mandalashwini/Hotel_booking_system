@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'booking/roomBook'
-
+  
   get 'search/searchView'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -8,8 +7,10 @@ Rails.application.routes.draw do
   resources :members 
   resources :search
  
-  get 'booking/checkLoginStatus'
+  get 'booking/roomBook'
+  get 'booking/setBookingStatus'
   get 'search/show'
+  get 'search/setCache'
   get 'home/index'
   get 'home/search_index'
   get 'home/userview'
