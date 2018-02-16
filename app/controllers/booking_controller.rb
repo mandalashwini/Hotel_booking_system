@@ -6,6 +6,7 @@ class BookingController < ApplicationController
   def roomBook
       if member_signed_in?
           if params[:result]!=nil
+            puts "ppppp"
                   puts params.inspect
                   confirmBooking
                   if @flag==1
@@ -13,7 +14,8 @@ class BookingController < ApplicationController
                     @flag=0
                   end
           else
-                session[:return_to] ||= request.referer
+            puts "fdsffdsf"
+                #redirect_to 'booking/confirmBooking'
                 redirect_to request.referer
           end
       else
