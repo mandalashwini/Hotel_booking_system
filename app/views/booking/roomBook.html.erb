@@ -5,6 +5,7 @@
 </head>
 <body>
   <div class="container" >
+  	<h4>Booking Confirmation Details</h4>
 	 <p><span style="color: white">Hotel Details</span></p>
 <table>
   <tr>
@@ -13,7 +14,7 @@
     <th >Rating</th>    
   </tr>
     <tr>
-      <td><%= @hotelsList.name %></td>
+      <td><%=  @hotelsList.name %></td>
       <td><%=  @hotelsList.location %></td>
       <td><%=  @hotelsList.rating %></td>
       </tr>
@@ -34,7 +35,7 @@
       <td><%= result.number_bedrooms %></td>
       <td><%= result.room_type %></td>
       </tr>
- 
+   <%end%>
 </table>
  <p><span style="color: white">Booking Details</span></p>
 
@@ -56,6 +57,5 @@
 <br>
   <%= submit_tag "Confirm Booking", class: "btn btn-large btn-primary search-button" %>
  </div>
-  <% end %>
 </body>
-<% end %>
+<%end%>

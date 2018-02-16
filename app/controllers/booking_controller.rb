@@ -28,9 +28,9 @@ class BookingController < ApplicationController
       @hotel_id=Room.select("hotel_id").where("id=?",checkedRooms)
       
       @roomsList=Array.new
-        checkedRooms.each do |rooms|
-        @roomsList.push(Room.find(rooms.to_i))
-        end
+      checkedRooms.each do |rooms|
+      @roomsList.push(Room.find(rooms.to_i))
+      end
      @newBooking.rooms << @roomsList   
      @hotelsList=@roomsList[0].hotel
      puts "5555",@newBooking.inspect
