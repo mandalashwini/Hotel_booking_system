@@ -1,2 +1,61 @@
-<p>book now</p>
- 	
+
+ <%= form_tag({:controller=> "booking", :action=>"roomBook"},:method=>"get")do %>
+<head>
+  <%= stylesheet_link_tag    'booking', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <div class="container" >
+	 <p><span style="color: white">Hotel Details</span></p>
+<table>
+  <tr>
+    <th>Hotel Name</th>
+    <th>Location</th>
+    <th >Rating</th>    
+  </tr>
+    <tr>
+      <td><%= @hotelsList.name %></td>
+      <td><%=  @hotelsList.location %></td>
+      <td><%=  @hotelsList.rating %></td>
+      </tr>
+ 
+</table>
+<table>
+  <tr>
+    <th>Room Id</th>
+    <th>Room Price</th>
+    <th >Number of Bedrooms</th>
+    <th >Room Type</th>
+    
+  </tr>
+   <% @roomsList.each do |result| %>
+    <tr>
+      <td><%= result.id %></td>
+      <td><%= result.room_price %></td>
+      <td><%= result.number_bedrooms %></td>
+      <td><%= result.room_type %></td>
+      </tr>
+ 
+</table>
+ <p><span style="color: white">Booking Details</span></p>
+
+<table>
+  <tr>
+    <th>Checkin Date</th>
+    <th>Checkout Date</th>
+    <th>Booking Date</th>
+    
+  </tr>
+    <tr>
+      <td><%= @newBooking.checkinDate %></td>
+      <td><%= @newBooking.checkoutDate %></td>
+      <td><%= @newBooking.bookingDate %></td>
+    </tr>
+ 
+</table>
+
+<br>
+  <%= submit_tag "Confirm Booking", class: "btn btn-large btn-primary search-button" %>
+ </div>
+  <% end %>
+</body>
+<% end %>

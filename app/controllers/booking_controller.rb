@@ -18,19 +18,23 @@ class BookingController < ApplicationController
   def setBookingStatus
    # render plain:params[:result].inspect
   
-      checkinDate1 = Rails.cache.read("checkinDate")
-      checkoutDate1 = Rails.cache.read("checkoutDate")
-      bookingDate1 = Rails.cache.read("bookingDate")
-      newBooking=Booking.create(checkinDate: checkoutDate1.to_s,checkoutDate: checkoutDate1.to_s,bookingDate: bookingDate1.to_s,member_id: current_member.id)
-    
-     #bookingObj.setBookingStatus(newBooking.id)
-      checkedRooms=params[:result]
+      @checkinDate1 = Rails.cache.read("checkinDate")
+      @checkoutDate1 = Rails.cache.read("checkoutDate")
+      @bookingDate1 = Rails.cache.read("bookingDate")
+      
 
-        @roomsList=Array.new
+      @newBooking=Booking.create(checkinDate: @checkoutDate1.to_s,checkoutDate: @checkoutDate1.to_s,bookingDate: @bookingDate1.to_s,member_id: current_member.id)
+      checkedRooms=params[:result]
+      @hotel_id=Room.select("hotel_id").where("id=?",checkedRooms)
+      
+      @roomsList=Array.new
         checkedRooms.each do |rooms|
-          @roomsList.push(Room.find(rooms.to_i))
+        @roomsList.push(Room.find(rooms.to_i))
         end
-        newBooking.rooms << @roomsList      
+     @newBooking.rooms << @roomsList   
+     @hotelsList=@roomsList[0].hotel
+     puts "5555",@newBooking.inspect
+    
   end
 
   def myBooking
