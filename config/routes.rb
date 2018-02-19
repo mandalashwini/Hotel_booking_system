@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'booking/setBookingStatus'
   get 'booking/myBooking'
   get 'booking/confirmBooking'
-  get 'booking/checkRoomAlreadyBook'
+  get 'booking/bookingSuccess'
   get 'search/show'
   get 'search/setCache'
   get 'home/index'
