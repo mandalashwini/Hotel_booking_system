@@ -4,7 +4,7 @@ describe "In-booking" do
 
 	context "user must be login with valid emailid and password" do
 		context "When user is not logged in "do
-			it "it should notify to login first.." do end
+			it "it should redirect to login page" do end
 		end
 		context "When user is logged in "do
 			it "it should return login status"do end

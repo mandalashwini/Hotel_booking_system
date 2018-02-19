@@ -25,7 +25,7 @@
   </tr>
    <% @searchRoomResult.each do |result| %>
     <tr>
-      <td><%= check_box_tag "result[]",result.id %>  </td>
+      <td><%= check_box_tag "result1[]",result.id %>  </td>
       <td><a href><%= result.id %></td></a>
       <td><a href><%= result.room_price %></td></a>
       <td><a href><%= result.number_bedrooms %></td></a>
@@ -37,11 +37,14 @@
 <br>
   <%= submit_tag "Book Now", class: "btn btn-large btn-primary search-button" %>
  </div>
-  <%= paginate @searchRoomResult %>
-
-            </div>
+  </div>
           </div>
         </div>
       </div>
+<div style="width: 10%; margin: auto;text-align: center;color: black">
+  <%= paginate @searchRoomResult %>
+</div>
+
+           
 </body>
 <% end %>

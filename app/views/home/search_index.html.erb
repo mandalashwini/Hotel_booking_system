@@ -4,26 +4,15 @@
 	<%= stylesheet_link_tag    'home', media: 'all', 'data-turbolinks-track': 'reload' %>
   
 </head>
-<section class="search-bar">
+<section1 class="search-bar">
   <div class="container">
      <div class="search-bar-div">
        <ul>
       	<div>
       		<li class="search-label"> <%= label_tag :"Search hotel"  %></li>
-       		<li class="search-input"> <%= text_field_tag :location_or_hotelname, params[:location_or_hotelname], onkeyup:'myFunction()', :autocomplete => :off,placeholder: "Location or Hotel name",:required =>true,:pattern => '[a-zA-Z]+', maxlength: 20, minlength: 3%>
-           <!-- oninvalid: "setCustomValidity('Plz enter on Alphabets ')" -->
-           <ul class="myUL">
-             <li><a href="#">Adele</a></li>
-             <li><a href="#">Agnes</a></li>
-
-             <li><a href="#">Billy</a></li>
-             <li><a href="#">Bob</a></li>
-
-             <li><a href="#">Calvin</a></li>
-             <li><a href="#">Christina</a></li>
-             <li><a href="#">Cindy</a></li>
-           </ul>
-           
+       		<li class="search-input"> <%= text_field_tag :location_or_hotelname, params[:location_or_hotelname], 
+            :autocomplete => :off,placeholder: "Location or Hotel name",:required =>true,:pattern => '[a-zA-Z]+', maxlength: 20, minlength: 1%>
+          
           </li>
     	</div>
       	<div>
@@ -40,5 +29,8 @@
       </ul>
     </div>
   </div>
-</section>
+</section1>
+<section2>
+  <div id="search_result"></div>
+</section2>
 <% end %>

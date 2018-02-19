@@ -17,9 +17,5 @@ class Search_operations
 		@roomShow=Room.roomsearchResult(@hotel_id,@booking_rooms) 
 	end
 	
-    def setCache
-    	Rails.cache.write("checkinDate", @checkinDate)
-    	response = Rails.cache.("checkinDate")
-    	puts "qqqq",response
-    end
+    
 end	

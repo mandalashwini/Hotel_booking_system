@@ -5,9 +5,9 @@ class BookingController < ApplicationController
   
   def confirmBooking
       if member_signed_in?
-          if params[:result]!=nil 
+          if params[:result1]!=nil 
            
-                  Rails.cache.write("rooms",params[:result])
+                  Rails.cache.write("rooms",params[:result1])
                   setBookingStatus
                   #redirect_to booking_confirmBooking_path
           else
@@ -35,14 +35,14 @@ class BookingController < ApplicationController
       @checkinDate1 = Rails.cache.read("checkinDate")
       @checkoutDate1 = Rails.cache.read("checkoutDate")
       @bookingDate1 = Rails.cache.read("bookingDate")
-      searchRoomExist=Room.joins(:bookings).where(:bookings=>{checkinDate: @checkoutDate1,checkoutDate: @checkoutDate1},id:@roomsList).uniq
+      searchRoomExist=Room.joins(:bookings).where(:bookings=>{checkinDate: @checkinDate1,checkoutDate: @checkoutDate1},id:@roomsList).uniq
           if(searchRoomExist.empty?)
-                  @newBooking=Booking.create(checkinDate: @checkoutDate1.to_s,checkoutDate: @checkoutDate1.to_s,bookingDate: @bookingDate1.to_s,member_id: current_member.id)
+                  @newBooking=Booking.create(checkinDate: @checkinDate1.to_s,checkoutDate: @checkoutDate1.to_s,bookingDate: @bookingDate1.to_s,member_id: current_member.id)
                   @newBooking.rooms << @roomsList   
                   @hotelsList=@roomsList[0].hotel
                   #redirect_to 'booking/bookingSuccess'
           else
-                flash[:alert]="Rooms are already booked.."
+                flash[:alert]="Rooms has been booked already.."
                 redirect_to request.referer
          end
   end

@@ -9,7 +9,7 @@ class SearchController < ApplicationController
                  redirect_to request.referer
                  flash[:alert] = "search Not Found"
                else
-              @searchHotelResult = Kaminari.paginate_array(@searchHotelResult).page(params[:page]).per(4)
+              @searchHotelResult = Kaminari.paginate_array(@searchHotelResult).page(params[:page]).per(2)
             end
              
         end
@@ -18,7 +18,7 @@ class SearchController < ApplicationController
           
            @searchObj=Search_operations.new(params)
            @searchRoomResult=@searchObj.searchRooms()
-           @searchRoomResult=@searchRoomResult.page(params[:page]).per(4)
+           @searchRoomResult=@searchRoomResult.page(params[:page]).per(2)
         end
   
         def setCache(params)
