@@ -6,9 +6,7 @@ class BookingController < ApplicationController
   def roomBook
       if member_signed_in?
           if params[:result]!=nil 
-            puts "ppppp"
-                  puts params.inspect
-
+           
                   #confirmBooking
                   @roomparam=params[:result]
                   puts "uu",@roomparam
@@ -16,8 +14,7 @@ class BookingController < ApplicationController
                     setBookingStatus
                    end
           else
-            puts "fdsffdsf"
-                #redirect_to 'booking/confirmBooking'
+          
                 redirect_to request.referer
           end
       else
@@ -28,25 +25,38 @@ class BookingController < ApplicationController
  
   def setBookingStatus
    # render plain:params[:result].inspect
-  
+
+      
+      checkedRooms=params[:result]
+      @hotel_id=Room.select("hotel_id").where("id=?",checkedRooms)
+
+      @roomsList=Array.new
+      checkedRooms.each do |rooms|
+      @roomsList.push(Room.find(rooms.to_i))
+      end
+      searchRoomExist=Room.joins(:bookings).where(:bookings=>{checkinDate: @checkoutDate1,checkoutDate: @checkoutDate1},id:@roomsList).uniq
+      if(searchRoomExist.empty?)
+      create
+      @newBooking.rooms << @roomsList   
+      @hotelsList=@roomsList[0].hotel
+     else
+      flash[:alert]="booking already done"
+      redirect_to request.referer
+    end
+  end
+
+  def create
       @checkinDate1 = Rails.cache.read("checkinDate")
       @checkoutDate1 = Rails.cache.read("checkoutDate")
       @bookingDate1 = Rails.cache.read("bookingDate")
       #if (Rails.cache.read("rooms")==params[:])
       puts "settt",params[:result]
       @newBooking=Booking.create(checkinDate: @checkoutDate1.to_s,checkoutDate: @checkoutDate1.to_s,bookingDate: @bookingDate1.to_s,member_id: current_member.id)
-      checkedRooms=params[:result]
-      @hotel_id=Room.select("hotel_id").where("id=?",checkedRooms)
-      
-      @roomsList=Array.new
-      checkedRooms.each do |rooms|
-      @roomsList.push(Room.find(rooms.to_i))
-      end
-     @newBooking.rooms << @roomsList   
-     @hotelsList=@roomsList[0].hotel
-       Rails.cache.write("rooms",params[:rooms])
+  end
+
+  def checkRoomAlreadyBook
     
-    
+    puts "jjj",result.class
   end
 
   def myBooking
