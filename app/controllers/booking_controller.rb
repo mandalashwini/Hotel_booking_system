@@ -48,9 +48,20 @@ class BookingController < ApplicationController
 
   def myBooking
     bookingobj=Booking_operations.new
-   # puts "id====",current_member.id  
-    bookingobj.showMyBooking(current_member.id)
-  end
+    @mem=Member.find(current_member.id)
+    @bookingDetails=@mem.bookings.distinct
+    @bookingDetails.each do |book|
+      @booking=book
+    puts "bbb",@booking.inspect
+    @roomDetails=bookingobj.getRoomsDetails(@booking)
+    puts "rrrr",@roomDetails.inspect
+    @hotelDetails=bookingobj.getHotelDetails
+    puts "hhh",@hotelDetails.inspect
+    puts "5555"
+    end
+     @a=10
+    end
+   
 
 
  end

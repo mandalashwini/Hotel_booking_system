@@ -19,4 +19,6 @@ class Hotel < ApplicationRecord
 
 	 scope :hotelsearchResult,->(booking_rooms,name_or_location){ joins(:rooms).where.not(:rooms => {id: booking_rooms} ).where("name ILIKE ? OR location ILIKE ?","#{name_or_location}%","#{name_or_location}%").uniq}
 
+     scope :hotelDetails, ->(roomDetails){joins(:rooms).where(:rooms => {id:roomDetails}).uniq}
+
 end

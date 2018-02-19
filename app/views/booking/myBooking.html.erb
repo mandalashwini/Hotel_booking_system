@@ -2,8 +2,52 @@
  
 
  	<span style="color: white">My Booking
+      <p>Booking Details</p>
+  <table>
+  <tr>
+    <th>Checkin Date</th>
+    <th >Checkout Date</th>
+    <th >Booking Date</th>
+  </tr>
+      <tr>
+      <td><a href><%= @booking.checkinDate %></td></a>
+      <td><a href><%= @booking.checkoutDate %></td></a>
+      <td><a href><%= @booking.bookingDate %></td></a>
+    </tr>
+  
+</table>
+  
+  <p>Hotel Details</p>
+  <table>
+  <tr>
+    <th>Hotel Name</th>
+    <th >Location</th>
+    <th >Rating</th>
+  </tr>
+   <%@hotelDetails.each do |result| %>
+    <tr>
+      <td><a href><%= result.name %></td></a>
+      <td><a href><%= result.location %></td></a>
+    </tr>
+  <% end %>
+</table>
+ 	
 
+  <p>Rooms List</p>
+<table>
+  <tr>
+    <th>Room Id</th>
+    <th>Room Price</th>
+    <th >Number of Bedrooms</th>
+    <th >Room Type</th>
+    
+  </tr>
+   <% @roomDetails.each do |result| %>
+    <tr>
+      <td><a href><%= result.room_price %></td></a>
+      <td><a href><%= result.number_bedrooms %></td></a>
+      <td><a href><%= result.room_type %></td></a>
+    </tr>
+  <% end %>
+</table>
  	</span>
-
-
-</body>

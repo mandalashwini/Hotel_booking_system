@@ -20,6 +20,6 @@ class Room < ApplicationRecord
 
     scope :bookingrooms, -> (checkinDate,checkoutDate){ joins(:bookings).select("id").where('"checkinDate" BETWEEN ? AND ? OR "checkoutDate" BETWEEN ? AND ?',checkinDate,checkoutDate,checkinDate,checkoutDate)}
     scope :roomsearchResult, ->(hotel_id,booking_rooms){joins(:hotel).where(hotel_id: hotel_id).where.not(:rooms => {id: booking_rooms} ).where(inactive_date: nil)}
-
+    scope :roomDetails, ->(bookingDetails){joins(:bookings).where(:bookings => {id:bookingDetails}).uniq}
  
 end
