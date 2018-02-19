@@ -1,18 +1,17 @@
 class BookingController < ApplicationController
+  #def confirmBooking
+   #     setBookingStatus
+  #end
+  
   def confirmBooking
-        setBookingStatus
-          
-  
-  end
-  
-  def roomBook
       if member_signed_in?
           if params[:result]!=nil 
            
                   Rails.cache.write("rooms",params[:result])
-                  redirect_to booking_confirmBooking_path
+                  setBookingStatus
+                  #redirect_to booking_confirmBooking_path
           else
-          
+                flash[:alert]="select rooms"
                 redirect_to request.referer
           end
       else
