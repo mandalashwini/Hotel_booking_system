@@ -5,7 +5,12 @@ class SearchController < ApplicationController
               @searchObj=Search_operations.new(params)
               setCache(params)
               @searchHotelResult=@searchObj.searchHotel
+              if @searchHotelResult.empty?
+                 redirect_to request.referer
+                 flash[:alert] = "search Not Found"
+               else
               @searchHotelResult = Kaminari.paginate_array(@searchHotelResult).page(params[:page]).per(4)
+            end
              
         end
 

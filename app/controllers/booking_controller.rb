@@ -5,14 +5,16 @@ class BookingController < ApplicationController
   
   def roomBook
       if member_signed_in?
-          if params[:result]!=nil
+          if params[:result]!=nil 
             puts "ppppp"
                   puts params.inspect
-                  confirmBooking
-                  if @flag==1
+
+                  #confirmBooking
+                  @roomparam=params[:result]
+                  puts "uu",@roomparam
+                  if confirmBooking
                     setBookingStatus
-                    @flag=0
-                  end
+                   end
           else
             puts "fdsffdsf"
                 #redirect_to 'booking/confirmBooking'
@@ -30,8 +32,8 @@ class BookingController < ApplicationController
       @checkinDate1 = Rails.cache.read("checkinDate")
       @checkoutDate1 = Rails.cache.read("checkoutDate")
       @bookingDate1 = Rails.cache.read("bookingDate")
-      
-
+      #if (Rails.cache.read("rooms")==params[:])
+      puts "settt",params[:result]
       @newBooking=Booking.create(checkinDate: @checkoutDate1.to_s,checkoutDate: @checkoutDate1.to_s,bookingDate: @bookingDate1.to_s,member_id: current_member.id)
       checkedRooms=params[:result]
       @hotel_id=Room.select("hotel_id").where("id=?",checkedRooms)
@@ -42,7 +44,8 @@ class BookingController < ApplicationController
       end
      @newBooking.rooms << @roomsList   
      @hotelsList=@roomsList[0].hotel
-     puts "5555",@newBooking.inspect
+       Rails.cache.write("rooms",params[:rooms])
+    
     
   end
 
@@ -52,14 +55,13 @@ class BookingController < ApplicationController
     @bookingDetails=@mem.bookings.distinct
     @bookingDetails.each do |book|
       @booking=book
-    puts "bbb",@booking.inspect
+    
     @roomDetails=bookingobj.getRoomsDetails(@booking)
-    puts "rrrr",@roomDetails.inspect
+    
     @hotelDetails=bookingobj.getHotelDetails
-    puts "hhh",@hotelDetails.inspect
-    puts "5555"
+    
     end
-     @a=10
+    
     end
    
 
