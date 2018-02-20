@@ -1,6 +1,7 @@
 class SearchController < ApplicationController
+  
         
-        def searchView
+        def searchHotelResult
              
               @searchObj=Search_operations.new(params)
               setCache(params)
@@ -15,8 +16,7 @@ class SearchController < ApplicationController
         end
 
         def show 
-          
-           @searchObj=Search_operations.new(params)
+          @searchObj=Search_operations.new(params)
            @searchRoomResult=@searchObj.searchRooms()
            @searchRoomResult=@searchRoomResult.page(params[:page]).per(2)
         end

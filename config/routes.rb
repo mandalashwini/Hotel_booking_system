@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  get 'search/searchView'
+  get 'search/searchHotelResult'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :members, controllers: { registrations: "registrations" }
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'booking/myBooking'
   get 'booking/confirmBooking'
   get 'booking/bookingSuccessMessage'
+  get 'booking/bookingDetails'
   get 'search/show'
   get 'search/setCache'
   get 'home/index'

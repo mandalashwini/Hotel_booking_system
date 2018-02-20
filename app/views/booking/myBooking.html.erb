@@ -16,46 +16,19 @@
                               <th >Checkout Date</th>
                               <th >Booking Date</th>
                              </tr>
-                            <tr>
-                            <td><%= @booking.checkinDate %></td>
-                            <td><%= @booking.checkoutDate %></td>
-                            <td><%= @booking.bookingDate %></td>
+                              <%@bookingDetails.each do |book|%>
+                             <tr>
+                            <td><%= book.checkinDate %></td>
+                            <td><%= book.checkoutDate %></td>
+                            <td><%= book.bookingDate %></td>
+                            <td><%=link_to "Details",booking_bookingDetails_path %></td>
                            </tr>
+                           <%end%>
+
                         </table>
     
-                      <hr>
-                   <span >Hotel Details</span>
-                    <table>
-                    <tr>
-                      <th>Hotel Name</th>
-                      <th >Location</th>
-                      <th >Rating</th>
-                    </tr>
-                     <%@hotelDetails.each do |result| %>
-                      <tr>
-                        <td><%= result.name %></td>
-                        <td><%= result.location %></td>
-                        <td><%= result.rating %></td>
-                      </tr>
-                    <% end %>   
-                    </table> 
-                    <hr>  
-                    <span>Rooms Details</span>        
-                <table>
-                <tr>
-                   <th>Room Price</th>
-                  <th >Number of Bedrooms</th>
-                  <th >Room Type</th>
-                </tr>
-                 <% @roomDetails.each do |result| %>
-                  <tr>
-                    <td><%= result.room_price %></td>
-                    <td><%= result.number_bedrooms %></td>
-                    <td><%= result.room_type %></td>
-                  </tr>
-                <% end %>
-              </table>
-
+                    
+              <%= paginate @bookingDetails %>
  	          </div>
         </div>
     </div>
