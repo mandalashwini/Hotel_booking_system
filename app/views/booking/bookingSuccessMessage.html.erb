@@ -1,0 +1,18 @@
+<head>
+	  <%= stylesheet_link_tag    'booking', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+</head>
+<%= form_tag({:controller=> "home", :action=>"search_index"},:method=>"get")do %>
+
+<div class="row">
+        <div class="col s12 m6">
+          <div class="card white">
+            <div class="card-content">
+    	        <span class="card-title">Thank You For Booking...</span>
+        	  	<span style="color: green">Booking confirmation message has been sent to you email</span>
+        	  	 <%= submit_tag "OK", class: "btn btn-primary search-button" %>
+            </div>
+      	</div>
+  	</div>
+</div>
+<%end%>

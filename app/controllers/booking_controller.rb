@@ -40,7 +40,8 @@ class BookingController < ApplicationController
                   @newBooking=Booking.create(checkinDate: @checkinDate1.to_s,checkoutDate: @checkoutDate1.to_s,bookingDate: @bookingDate1.to_s,member_id: current_member.id)
                   @newBooking.rooms << @roomsList   
                   @hotelsList=@roomsList[0].hotel
-                  #redirect_to 'booking/bookingSuccess'
+                  UserMailer.booking_confirmation(Member.find(current_member.id)).deliver_now
+                 # redirect_to 'booking/bookingSuccessMessage'
           else
                 flash[:alert]="Rooms has been booked already.."
                 redirect_to request.referer
