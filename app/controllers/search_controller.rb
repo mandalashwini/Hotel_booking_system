@@ -15,7 +15,7 @@ class SearchController < ApplicationController
              
         end
 
-        def show 
+        def searchRoomResult
           @searchObj=Search_operations.new(params)
            @searchRoomResult=@searchObj.searchRooms()
            @searchRoomResult=@searchRoomResult.page(params[:page]).per(2)

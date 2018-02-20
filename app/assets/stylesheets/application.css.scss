@@ -44,8 +44,13 @@ body {
 
 .pagination{
 	background-color: unset;	
+	margin-left: 250px;
 }
 
 p{
 	color:white;
+}
+p.alert{
+	color:white;
+	margin-left: 42%;
 }
