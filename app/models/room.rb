@@ -22,4 +22,9 @@ class Room < ApplicationRecord
     scope :roomsearchResult, ->(hotel_id,booking_rooms){joins(:hotel).where(hotel_id: hotel_id).where.not(:rooms => {id: booking_rooms} ).where(inactive_date: nil)}
     scope :roomDetails, ->(bookingDetails){joins(:bookings).where(:bookings => {id:bookingDetails}).uniq}
  
+ 	def self.inactive_Rooms
+
+ 	 Room.where("(?-inactive_date)>?",Date.today,30).destroy_all
+
+ 	end
 end
