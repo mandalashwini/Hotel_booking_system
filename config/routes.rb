@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'booking/confirmBooking'
   get 'booking/bookingSuccessMessage'
   get 'booking/bookingDetails'
-  get 'search/show'
+  get 'search/searchRoomResult'
   get 'search/setCache'
   get 'home/index'
   get 'home/search_index'

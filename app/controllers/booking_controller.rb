@@ -66,13 +66,7 @@ class BookingController < ApplicationController
     bookingobj=Booking_operations.new
     @member=Member.find(current_member.id)
     @bookingDetails=@member.bookings.distinct
-   # puts "@bookingDetails".class
-        #@bookingDetails.each do |book|
-         #   @booking=book
-          #   @roomDetails=bookingobj.getRoomsDetails(@booking)
-      
-      #  end   # @hotelDetails=bookingobj.getHotelDetails
-       @bookingDetails=@bookingDetails.page(params[:page]).per(2)
+    @bookingDetails=@bookingDetails.page(params[:page]).per(2)
     end
    
 
