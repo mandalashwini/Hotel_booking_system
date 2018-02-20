@@ -16,7 +16,7 @@
 /*$(document).on('turbolinks:load', function(){
 	 $(".chosen-select").chosen();
 	})*/
-	/*function search(){ 
+/*	function search(){ 
 		var name_or_location = document.getElementById('search_name_or_location').value;
 		 var checkin = document.getElementById('search_checkin').value; 
 		 var checkout = document.getElementById('search_checkout').value;
@@ -29,6 +29,5 @@
   xhttp.open("GET", "/search/searchView?name_or_location="+name_or_location+"&checkin="+checkin+"&checkout="+checkout, true);
   xhttp.send();
 }
-
 */
 	
