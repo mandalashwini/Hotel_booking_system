@@ -56,8 +56,11 @@ p{
 	color:white;
 }
 p.alert{
-	color:white;
-	margin-left: 42%;
+    color: #ff0006;
+    margin-left: 42%;
+    width: 21%;
+    background: lightyellow;
+    padding-left: 5%;
 }
 nav .brand-logo{
 	margin-left: 5%;
@@ -65,7 +68,11 @@ nav .brand-logo{
     }
 
 p.notice{
- margin-left: 35%;
+ color: #ff0006;
+    margin-left: 42%;
+    width: 21%;
+    background: lightyellow;
+    padding-left: 5%;
  }
  .card{
  border-radius: 20px;

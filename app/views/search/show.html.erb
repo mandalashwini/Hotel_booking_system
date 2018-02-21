@@ -16,7 +16,6 @@
                         <table>
                           <tr>
                             <th></th>
-                            <th>Room Id</th>
                             <th>Room Price</th>
                             <th >Number of Bedrooms</th>
                             <th >Room Type</th>
@@ -25,7 +24,6 @@
                            <% @searchRoomResult.each do |result| %>
                             <tr>
                               <td><%= check_box_tag "result1[]",result.id %>  </td>
-                              <td><%= result.id %></td>
                               <td><%= result.room_price %></td>
                               <td><%= result.number_bedrooms %></td>
                               <td><%= result.room_type %></td>
