@@ -4,12 +4,11 @@
 	<%= stylesheet_link_tag    'home', media: 'all', 'data-turbolinks-track': 'reload' %>
   
 </head>
-
+<span  class="head">Online Hotel Booking</span>
 <section1 class="search-bar">
   <div class="container">
      <div class="search-bar-div">
-      <span  class="head">Online Hotel Booking</span>
-       <ul>
+      <ul>
       	<div>
       		<li class="search-label"> <%= label_tag :"Search hotel"  %></li>
        		<li class="search-input"> <%= text_field_tag :location_or_hotelname, params[:location_or_hotelname], 

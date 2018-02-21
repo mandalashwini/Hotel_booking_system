@@ -9,7 +9,7 @@ class BookingController < ApplicationController
                   setBookingStatus
                   #redirect_to booking_confirmBooking_path
           else
-                flash[:alert]="Rooms not selected..."
+                flash[:alert]="Select Room.."
                 redirect_to request.referer
           end
       else
