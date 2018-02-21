@@ -1,9 +1,12 @@
-<%= form_tag({:controller=> "search", :action=>"searchHotelResult"},:method=>"get")do %>
+
 <head>
-	
+  
+  
+	 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'  %>
 	<%= stylesheet_link_tag    'home', media: 'all', 'data-turbolinks-track': 'reload' %>
   
 </head>
+
 <p class="head">Online Hotel Booking</p>
  <div class="container">
   <section1 class="search-bar">
@@ -27,10 +30,10 @@
           <li class="search-label">Check Out</li>
          <li class="search-input"> <%= date_field :checkoutDate, nil,:value=>Date.today,min: Date.today,:required=>true %></li>
   		</div>
-      		<li><%= submit_tag "search", class: "btn btn-large btn-primary search-button" %></li>
+      		<li><%= submit_tag "search", class: "btn btn-large btn-primary search-button", :onclick=>"search()" %></li>
       </ul>
     </div>
  
 </section1>
  </div>
-<% end %>
+
