@@ -26,7 +26,7 @@ class BookingController < ApplicationController
       @searchRoomExist=Room.joins(:bookings).where(:bookings=>{checkinDate: @checkinDate1,checkoutDate: @checkoutDate1},id:@roomsList).uniq
           if(@searchRoomExist.empty?)
                   create
-                 
+                   bookingConfirmationMail
                  
           else
                 flash[:alert]="Rooms has been booked already.."

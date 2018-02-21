@@ -24,7 +24,7 @@ class Room < ApplicationRecord
  
  	def self.inactive_Rooms
 
- 	 Room.where("(?-inactive_date)>?",Date.today,30).destroy_all
+ 	 Room.where.not(inactive_date:nil).where("(?-inactive_date)>?",Date.today,30).destroy_all
 
  	end
 end

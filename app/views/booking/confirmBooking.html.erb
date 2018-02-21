@@ -3,7 +3,7 @@
   <%= stylesheet_link_tag    'booking', media: 'all', 'data-turbolinks-track': 'reload' %>
   
 </head>
-<%= form_tag({:controller=> "booking", :action=>"bookingConfirmationMail"},:method=>"get")do %>
+<%= form_tag({:controller=> "booking", :action=>"bookingConfirmationMessage"},:method=>"get")do %>
  <div class="row">
         <div class="col s12 m6">
           <div class="card white">
@@ -11,7 +11,7 @@
               <span class="card-title">Booking Confirmation Details</span>
     <body>
   
-  	
+  	<p><span>Hotel Details</span></p>
 	 <table>
   <tr>
     <th>Hotel Name</th>
@@ -25,6 +25,8 @@
       </tr>
  
 </table>
+<hr>
+<p><span>Rooms Details</span></p>
 <table>
   <tr>
     <th>Room Id</th>
@@ -42,7 +44,8 @@
       </tr>
    <%end%>
 </table>
- <p><span style="color: white">Booking Details</span></p>
+<hr>
+ <p><span>Booking Details</span></p>
 
 <table>
   <tr>

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'booking/setBookingStatus'
   get 'booking/myBooking'
   get 'booking/confirmBooking'
-  get 'booking/bookingConfirmationMail'
+  get 'booking/bookingConfirmationMessage'
   get 'booking/bookingDetails'
   get 'search/show'
   get 'search/setCache'
