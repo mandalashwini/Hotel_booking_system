@@ -7,7 +7,7 @@ class BookingController < ApplicationController
            
                   Rails.cache.write("rooms",params[:result1])
                   setBookingStatus
-                  #redirect_to booking_confirmBooking_path
+                 
           else
                 flash[:alert]="Select Room.."
                 redirect_to request.referer
