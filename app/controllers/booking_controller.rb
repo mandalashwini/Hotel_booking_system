@@ -20,14 +20,16 @@ class BookingController < ApplicationController
  
   def setBookingStatus
    
-     Booking_operations.readCache
-     
-      @hotel_id=Room.select("hotel_id").where("id=?",@@checkedRooms)
-      convert_to_IntegerArray
-      @searchRoomExist=Room.joins(:bookings).where(:bookings=>{checkinDate: @@checkinDate1,checkoutDate: @@checkoutDate1},id:@@roomsList).uniq
+        @checkedRooms= Booking_operations.read_Rooms
+        @checkinDate1=Booking_operations.read_checkin
+        @checkoutDate1=Booking_operations.read_checkout
+        @bookingDate1=Booking_operations.read_bookingDate
+        @hotel_id=Room.select("hotel_id").where("id=?",@checkedRooms)
+        @roomsList=Booking_operations.convert_to_IntegerArray
+        @searchRoomExist=Room.joins(:bookings).where(:bookings=>{checkinDate: @checkinDate1,checkoutDate: @checkoutDate1},id:@roomsList).uniq
           if(@searchRoomExist.empty?)
                   create
-                   bookingConfirmationMail
+                   Booking_operations.bookingConfirmationMail(current_member.id)
                  
           else
                 flash[:alert]="Rooms has been booked already.."
@@ -38,9 +40,10 @@ class BookingController < ApplicationController
   
 
   def create
-      @newBooking=Booking.create(checkinDate: @@checkinDate1.to_s,checkoutDate: @@checkoutDate1.to_s,bookingDate: @@bookingDate1.to_s,member_id: current_member.id)
-      @newBooking.rooms << @@roomsList   
-      @hotelsList=@@roomsList[0].hotel
+      @newBooking=Booking.create(checkinDate: @checkinDate1.to_s,checkoutDate: @checkoutDate1.to_s,bookingDate: @bookingDate1.to_s,member_id: current_member.id)
+      puts @roomsList[0].class
+      @newBooking.rooms << @roomsList   
+      @hotelsList=@roomsList[0].hotel
                   
   end
 
