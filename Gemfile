@@ -9,6 +9,7 @@ group :development, :test do
   gem 'rspec-rails'
 end
 ####
+gem 'sidekiq'
 gem 'rubycritic'
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'

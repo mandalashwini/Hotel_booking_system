@@ -29,6 +29,8 @@ class Booking_operations
 
 
 	def self.bookingConfirmationMail(member_id)
-      UserMailer.booking_confirmation(Member.find(member_id)).deliver_now
+    memberInfo=Member.find(member_id)
+    EmailsenderWorker.perform_async(memberInfo.email)
+     # UserMailer.booking_confirmation(Member.find(member_id)).deliver_now
   end
 end
