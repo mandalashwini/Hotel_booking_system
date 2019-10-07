@@ -1,3 +1,59 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.search-input{
+ 	width:  20%;
+    float:  left;
+    margin-left:  0.5%;
+    margin-right: 0.1%;
+    background-color: #ffffff;
+
+}
+.container{
+	width: 80%;
+    margin: auto;
+    margin-top: 4%;
+    margin-left: 21%;
+}
+.search-input input[type=text] input[type=date]{
+	border-bottom:none;
+}
+ 
+
+.search-label{
+	color: red;
+    font-size: 19px;
+    margin-top: -27px;
+    margin-left: 1%;
+}
+
+
+.btn, .btn-large {
+	background-color: red;
+    margin-top: 0%;
+    padding-top: -14px;
+    height: 4.4em;
+    margin-left: 8px;
+    border-radius: 9px;
+    width: 11%;
+}
+
+label{
+    color:red;
+     font-size: 19px;
+}
+i.left {
+    margin-top: 19px;
+    margin-left: -19px;
+}
+select{
+    display: block;
+}
+.head {
+    margin-left: 36%;
+    color: white;
+    margin-top: 8%;
+    font-size: 37px;
+    font-style: oblique;
+}

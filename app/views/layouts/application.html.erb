@@ -3,14 +3,52 @@
   <head>
     <title>HotelBookingSystem</title>
     <%= csrf_meta_tags %>
+    <!--Google icon-->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
+  <!--google jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'  %>
+    <%= javascript_include_tag 'rails.validations' %>
+  
   </head>
 
   <body>
-  	 <p class="notice"><%= notice %></p>
+     <!--nav bar-->
+     <header>
+      <nav>
+     <div class="nav-wrapper" >
+      <a href="#" class="brand-logo"><img src="/assets/m1.jpeg"></a><!-- <span style="color: red">Welcome</span></a> -->
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+         
+        <% if member_signed_in? %>
+          <li><a href="/home/search_index">Home</a></li>
+          <li><a href="/booking/myBooking">My Booking</a></li>
+          <li><a href="/members/edit">Edit profile</a></li>
+          <li><%= link_to 'Sign_out',  destroy_member_session_path,:method => :delete %></li>
+        <%else%>
+          <li><a href="/home/search_index">Home</a></li>
+          <li><a href="/members/sign_up">User registration</a></li>
+          <li><a href="/members/sign_in">User Login</a></li>
+          <li><%= link_to 'Admin Login',  new_admin_user_session_path %></li>
+        <% end %> 
+        </ul>
+    </div>
+  </nav>
+</header>
+
+
+
+     <p class="notice"><%= notice %></p>
      <p class="alert"><%= alert %></p>
-    <%= yield %>
+     <%= yield %>
   </body>
 </html>
+
+
+

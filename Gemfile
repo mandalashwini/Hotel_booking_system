@@ -4,7 +4,25 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-
+####rspec###
+group :development, :test do
+  gem 'rspec-rails'
+end
+####
+gem 'sidekiq'
+gem 'rubycritic'
+gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+##
+gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'activeadmin_addons'
+gem 'kaminari'
+gem 'whenever', require: false
+#####
+gem 'mini_magick'
+gem 'jquery-rails'
+gem 'client_side_validations'
+gem 'carrierwave'
 # devise gem
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

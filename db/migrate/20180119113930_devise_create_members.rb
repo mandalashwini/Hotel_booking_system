@@ -33,7 +33,7 @@ class DeviseCreateMembers < ActiveRecord::Migration[5.1]
       # t.datetime :locked_at
 
       t.string :name
-      t.integer :mobileNumber
+      t.float :mobileNumber,limit:12
       t.binary :photo
 
       t.timestamps null: false

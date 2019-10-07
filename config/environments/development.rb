@@ -23,9 +23,9 @@ Rails.application.configure do
       'Cache-Control' => "public, max-age=#{2.days.seconds.to_i}"
     }
   else
-    config.action_controller.perform_caching = false
+    config.action_controller.perform_caching = true
 
-    config.cache_store = :null_store
+    config.cache_store = :memory_store
   end
 
   # Don't care if the mailer can't send.
@@ -53,4 +53,23 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+ config.action_mailer.delivery_method = :smtp 
+ config.action_mailer.perform_deliveries = true
+ config.action_mailer.raise_delivery_errors = true 
+ config.action_mailer.default :charset => "utf-8" 
+ config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'gmail.com',
+  user_name:            'ashwini.mandal@cuelogic.com',
+  password:             'Cuelogic',
+  authentication:       'plain'
+  # enable_starttls_auto: true
+  # ^ ^ remove this option ^ ^
+}
+
+
+
+   
 end

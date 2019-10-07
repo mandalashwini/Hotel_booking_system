@@ -1,9 +1,27 @@
 Rails.application.routes.draw do
+  
+  get 'search/searchHotelResult'
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :members, controllers: { registrations: "registrations" }
+  
   resources :members 
+  resources :search
+ 
+  
+  get 'booking/setBookingStatus'
+  get 'booking/myBooking'
+  get 'booking/confirmBooking'
+  get 'booking/bookingConfirmationMessage'
+  get 'booking/bookingDetails'
+  get 'search/show'
+  get 'search/setCache'
   get 'home/index'
+  get 'home/search_index'
   get 'home/userview'
-  root 'home#index'
+  root 'home#search_index'
+  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   authenticated :member do
